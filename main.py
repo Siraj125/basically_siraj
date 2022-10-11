@@ -39,7 +39,7 @@ async def on_message(message):
     await message.channel.send("fuck you you piece of fucking shit head")
 
   if db["responding"]:
-    if any(word.lower() in message.content for word in summon_words):
+    if any(word in message.content for word in summon_words):
       await message.channel.send(random.choice(starter_greetings))
 
   if message.content.startswith('$responding'):
@@ -54,4 +54,4 @@ async def on_message(message):
 
 
 keep_alive()
-client.run(os.getenv("TOKEN")) 
+client.run(os.getenv("TOKEN"))
