@@ -2,6 +2,7 @@ import discord
 import random
 from replit import db
 from keep_alive import keep_alive
+import os
 
 intent = discord.Intents.default()
 intent.members = True
@@ -12,7 +13,7 @@ client = discord.Client(intents=intent)
 if "responding" not in db.keys():
   db["responding"] = True
 
-summon_words = ["hi siraj","hey siraj","wodup siraj"]
+summon_words = ["hi siraj","hey siraj","wodup siraj","Hey siraj","Hey Siraj","Siraj","siraj"]
 
 starter_greetings = [
   "lol hi", "Hi there", "run", "you dont belong here", "hello bossa",
@@ -38,7 +39,7 @@ async def on_message(message):
     await message.channel.send("fuck you you piece of fucking shit head")
 
   if db["responding"]:
-    if any(word in message.content for word in summon_words):
+    if any(word.lower() in message.content for word in summon_words):
       await message.channel.send(random.choice(starter_greetings))
 
   if message.content.startswith('$responding'):
@@ -53,5 +54,4 @@ async def on_message(message):
 
 
 keep_alive()
-client.run(
-  'MTAyOTI0OTA3ODc2NjM1ODU5OQ.GOTpkR.aEw_CkeKVBkAH1pQBnPGZuR5ActjemIzZmILGw')
+client.run(os.getenv("TOKEN")) 
