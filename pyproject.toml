@@ -11,6 +11,10 @@ replit = "^3.2.4"
 Flask = "^2.2.0"
 urllib3 = "^1.26.12"
 discord = "^2.0.0"
+requests = "^2.28.1"
+discord-voice = "^0.0.0"
+"discord.py" = "^2.0.1"
+discord2 = "^2.0.1"
 
 [tool.poetry.dev-dependencies]
 debugpy = "^1.6.2"

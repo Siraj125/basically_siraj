@@ -27,8 +27,13 @@ async def on_ready():
   print("We have logged in as {0.user}".format(client))
 
 
+
+
+
 @client.event
+
 async def on_message(message):
+  
   if message.author == client.user:
     return
 
@@ -51,7 +56,20 @@ async def on_message(message):
     if value.lower() == "false":
       db["responding"] = False
       await message.channel.send("I will now stfu")
+      
+
+@client.command(pass_content = True)
+async def join(ctx):
+  if(ctx.author.voice):
+    channel = ctx.message.author.voice.chanel
+    await channel.connect()
+  else:
+    await ctx.send("tf nigga, join a vc first")
+
+
+
 
 
 keep_alive()
 client.run(os.getenv("TOKEN"))
+
